@@ -4,16 +4,12 @@ import static br.ce.wcaquino.utils.DataUtils.adicionarDias;
 
 import java.util.Date;
 
-import org.junit.Assert;
-import org.junit.Test;
-
 import br.ce.wcaquino.entidades.Filme;
 import br.ce.wcaquino.entidades.Locacao;
 import br.ce.wcaquino.entidades.Usuario;
-import br.ce.wcaquino.utils.DataUtils;
 
 public class LocacaoService {
-	
+
 	public Locacao alugarFilme(Usuario usuario, Filme filme) {
 		Locacao locacao = new Locacao();
 		locacao.setFilme(filme);
@@ -21,31 +17,15 @@ public class LocacaoService {
 		locacao.setDataLocacao(new Date());
 		locacao.setValor(filme.getPrecoLocacao());
 
-		//Entrega no dia seguinte
+		// Entrega no dia seguinte
 		Date dataEntrega = new Date();
 		dataEntrega = adicionarDias(dataEntrega, 1);
 		locacao.setDataRetorno(dataEntrega);
-		
-		//Salvando a locacao...	
-		//TODO adicionar método para salvar
-		
+
+		// Salvando a locacao...
+		// TODO adicionar método para salvar
+
 		return locacao;
 	}
-	
-	@Test
-	public void teste() {
-		//cenario
-		LocacaoService service = new LocacaoService();
-		Usuario usuario = new Usuario("Usuario1");
-		Filme filme = new Filme("Filme 1", 2, 5.0);		
-		
-		//acao
-		Locacao locacao = service.alugarFilme(usuario, filme);
-		
-		//verificacao
-		//org.junit.assert - assertTrue - para retornar true, se retornar algo falso, o teste trava
-		Assert.assertTrue(locacao.getValor() == 5.00);
-		Assert.assertTrue(DataUtils.isMesmaData(locacao.getDataLocacao(), new Date()));
-		Assert.assertTrue(DataUtils.isMesmaData(locacao.getDataRetorno(), DataUtils.obterDataComDiferencaDias(1)));
-	}
+
 }
