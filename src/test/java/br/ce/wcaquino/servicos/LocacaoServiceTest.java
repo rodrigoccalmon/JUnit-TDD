@@ -18,13 +18,12 @@ public class LocacaoServiceTest {
 	@Rule
 	public ErrorCollector error = new ErrorCollector();
 
-	@SuppressWarnings("deprecation")
 	@Test
 	public void teste() {
 		// cenario
 		LocacaoService service = new LocacaoService();
 		Usuario usuario = new Usuario("Usuario1");
-		Filme filme = new Filme("Filme 1", 2, 5.0);
+		Filme filme = new Filme("Filme 1", 1, 5.0);
 
 		// acao
 		Locacao locacao;
@@ -38,6 +37,7 @@ public class LocacaoServiceTest {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+			Assert.fail("Não deveria lançar exceção");
 		}
 
 		// verificacao
