@@ -47,7 +47,7 @@ public class LocacaoServiceTest2 {
 	}
 
 	@Test
-	//forma robusca, professor recomenda essa
+	//forma robusca, professor recomenda essa, forma robusta
 	public void testLocacaoUsuarioVazio() throws FilmeSemEstoqueException {
 		LocacaoService service = new LocacaoService();
 		Filme filme = new Filme("filme 1", 0, 5.0);
