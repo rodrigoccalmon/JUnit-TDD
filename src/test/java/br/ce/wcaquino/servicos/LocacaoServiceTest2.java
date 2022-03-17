@@ -35,6 +35,9 @@ public class LocacaoServiceTest2 {
 	}
 
 	@Test(expected = FilmeSemEstoqueException.class) // forma elegante
+	// funciona bem quando apenas a exceção importa pra vc, nos casos que consegue
+	// garantir o motivo pelo qual ela foi lançada
+
 	public void testLocacao_filmeSemEstoque() throws Exception {
 		LocacaoService service = new LocacaoService();
 		Usuario usuario = new Usuario("usuario 1");
@@ -44,6 +47,7 @@ public class LocacaoServiceTest2 {
 	}
 
 	@Test
+	//forma robusca, professor recomenda essa
 	public void testLocacaoUsuarioVazio() throws FilmeSemEstoqueException {
 		LocacaoService service = new LocacaoService();
 		Filme filme = new Filme("filme 1", 0, 5.0);
@@ -63,20 +67,11 @@ public class LocacaoServiceTest2 {
 
 		exception.expect(LocadoraException.class);
 		exception.expectMessage("Filme vazio");
-		
+
 		service.alugarFilme(usuario, null);
 
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
 //	@Test // vantagem pois captura a exceção e ainda verifica a msg da exception
 //	public void testLocacao_filmeSemEstoque2() {
 //		LocacaoService service = new LocacaoService();
