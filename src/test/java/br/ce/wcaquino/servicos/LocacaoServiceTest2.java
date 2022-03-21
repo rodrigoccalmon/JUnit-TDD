@@ -15,8 +15,6 @@ import br.ce.wcaquino.exception.LocadoraException;
 
 public class LocacaoServiceTest2 {
 
-	private static int contador = 0;
-
 	private LocacaoService service;
 
 	@Rule
@@ -27,15 +25,7 @@ public class LocacaoServiceTest2 {
 
 	@Before
 	public void setup() {
-		System.out.println("Before");
-		LocacaoService service = new LocacaoService();
-		contador++;
-		System.out.println(contador);
-	}
-
-	@After
-	public void tearDown() {
-		System.out.println("After");
+		service = new LocacaoService();
 	}
 
 	@Test
@@ -85,6 +75,34 @@ public class LocacaoServiceTest2 {
 		service.alugarFilme(usuario, null);
 
 	}
+	
+}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 //	@Test // vantagem pois captura a exceção e ainda verifica a msg da exception
 //	public void testLocacao_filmeSemEstoque2() {
@@ -111,4 +129,4 @@ public class LocacaoServiceTest2 {
 //		exception.expectMessage("Filme sem estoque");
 //	}
 
-}
+
