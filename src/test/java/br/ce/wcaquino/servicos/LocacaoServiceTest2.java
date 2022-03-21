@@ -15,6 +15,8 @@ import br.ce.wcaquino.exception.LocadoraException;
 
 public class LocacaoServiceTest2 {
 
+	private static int contador = 0;
+
 	private LocacaoService service;
 
 	@Rule
@@ -27,6 +29,8 @@ public class LocacaoServiceTest2 {
 	public void setup() {
 		System.out.println("Before");
 		LocacaoService service = new LocacaoService();
+		contador++;
+		System.out.println(contador);
 	}
 
 	@After
