@@ -1,9 +1,7 @@
 package br.ce.wcaquino.servicos;
 
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
-
-import org.junit.Assert;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ErrorCollector;
@@ -17,16 +15,28 @@ import br.ce.wcaquino.exception.LocadoraException;
 
 public class LocacaoServiceTest2 {
 
+	private LocacaoService service;
+
 	@Rule
 	public ErrorCollector error = new ErrorCollector();
 
 	@Rule
 	public ExpectedException exception = ExpectedException.none();
 
+	@Before
+	public void setup() {
+		System.out.println("Before");
+		LocacaoService service = new LocacaoService();
+	}
+
+	@After
+	public void tearDown() {
+		System.out.println("After");
+	}
+
 	@Test
 	public void testeLocacao() throws Exception {
 
-		LocacaoService service = new LocacaoService();
 		Usuario usuario = new Usuario("usuario 1");
 		Filme filme = new Filme("filme 1", 2, 5.0);
 
@@ -47,7 +57,7 @@ public class LocacaoServiceTest2 {
 	}
 
 	@Test
-	//forma robusca, professor recomenda essa, forma robusta
+	// forma robusca, professor recomenda essa, forma robusta
 	public void testLocacaoUsuarioVazio() throws FilmeSemEstoqueException {
 		LocacaoService service = new LocacaoService();
 		Filme filme = new Filme("filme 1", 0, 5.0);
